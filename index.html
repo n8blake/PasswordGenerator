@@ -10,11 +10,29 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Password Generator</h1>
+        <h1>N8's Password Generator</h1>
       </header>
       <div class="card">
         <div class="card-header">
           <h2>Generate a Password</h2>
+          <h4>Options</h4>
+          <form>
+            <label for="password-length">Password Length (8-128):</label>
+            <input type="number" min="8" max="128" id="password-length" name="password-length" checked="true" value="8" />
+            <br>
+            <input type="checkbox" id="checkbox-lower" name="checkbox-lower" checked="true" />
+            <label for="checkbox-lower">Lowercase letters (a-z)</label><br>
+            <input type="checkbox" id="checkbox-upper" name="checkbox-upper" />
+            <label for="checkbox-upper">Uppercase letters (A-Z)</label><br>
+            <input type="checkbox" id="checkbox-number" name="checkbox-number" />
+            <label for="checkbox-number">Numbers (0-9)</label><br>
+            <input type="checkbox" id="checkbox-specials" name="checkbox-specials" />
+            <label for="checkbox-specials">Special Characters (`~!@#$%^().,{}[]|\)</label><br>
+          </form>
+          <br>
+          <p id="error-message">
+            Length must be between 8 and 128 and one or more of the password options must be selected.
+          </p>
         </div>
         <div class="card-body">
           <textarea
