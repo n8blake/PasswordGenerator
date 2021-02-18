@@ -20,11 +20,12 @@ checkboxes.forEach(function(element){
 // Get the password length value and add a change eventlistener 
 var passwordLength = document.querySelector('#password-length');
 passwordLength.addEventListener("change", validateOptions);
+
 // Add an eventlistener to box so you can put enter and make the password 
 // generate
 passwordLength.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-    	valideAndTryWrite();
+    	validateAndTryWrite();
     }
 });
 
@@ -50,6 +51,8 @@ function validateOptions(){
 	return validateOptionsSelected;
 }
 
+// Return a random string of character from the seleted sets
+// of length passwordLength 
 function generatePassword(){
 	var optionsFunctions = [lowerRange, upperRange, numbersRange, specialCharsRange];
 	var options = [];
@@ -70,12 +73,13 @@ function generatePassword(){
 	return password;
 }
 
-function valideAndTryWrite() {
+// Validate options boxes and try to write the password to the 
+// DOM. Used for hitting enter on the length box.
+function validateAndTryWrite() {
 	if(validateOptions()){
 		writePassword();
 	}
 }
-
 
 // Increment a character by adding one to the character code
 // like 1 + 1 = 2, 'a' + 1 = 'b';
