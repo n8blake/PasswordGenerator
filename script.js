@@ -5,14 +5,11 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
 
 // Get all the checkbox elements and add click eventlistners 
 var checkboxes = document.querySelectorAll("input[type='checkbox']");
@@ -23,6 +20,13 @@ checkboxes.forEach(function(element){
 // Get the password length value and add a change eventlistener 
 var passwordLength = document.querySelector('#password-length');
 passwordLength.addEventListener("change", validateOptions);
+// Add an eventlistener to box so you can put enter and make the password 
+// generate
+passwordLength.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+    	valideAndTryWrite();
+    }
+});
 
 // Validate options boxes. Return true if at least one
 // of the options are selected, and false if none are selected.
@@ -63,9 +67,15 @@ function generatePassword(){
 		var randomIndex = getRandomInteger(options.length - 1);
 		password += options[randomIndex];
 	}
-	console.log(password);
 	return password;
 }
+
+function valideAndTryWrite() {
+	if(validateOptions()){
+		writePassword();
+	}
+}
+
 
 // Increment a character by adding one to the character code
 // like 1 + 1 = 2, 'a' + 1 = 'b';
@@ -103,3 +113,6 @@ var specialCharsRange = () => {
 function getRandomInteger(maximum) {
   return Math.floor(Math.random() * Math.floor(maximum));
 }
+
+// Fill specChars with specialCharsRange
+document.getElementById('specChars').innerHTML = specialCharsRange().join(' '); 
