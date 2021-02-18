@@ -20,6 +20,7 @@ checkboxes.forEach(function(element){
 // Get the password length value and add a change eventlistener 
 var passwordLength = document.querySelector('#password-length');
 passwordLength.addEventListener("change", validateOptions);
+
 // Add an eventlistener to box so you can put enter and make the password 
 // generate
 passwordLength.addEventListener('keypress', function (event) {
@@ -79,7 +80,6 @@ function validateAndTryWrite() {
 		writePassword();
 	}
 }
-
 
 // Increment a character by adding one to the character code
 // like 1 + 1 = 2, 'a' + 1 = 'b';
