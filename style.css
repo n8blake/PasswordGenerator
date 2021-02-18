@@ -118,6 +118,12 @@ button[disabled] {
   overflow: hidden;
 }
 
+#error-message {
+  color: hsl(360, 91%, 36%);
+  font-size: 0.8rem;
+  display: none;
+}
+
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
