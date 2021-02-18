@@ -24,7 +24,7 @@ passwordLength.addEventListener("change", validateOptions);
 // generate
 passwordLength.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-    	valideAndTryWrite();
+    	validateAndTryWrite();
     }
 });
 
@@ -50,6 +50,8 @@ function validateOptions(){
 	return validateOptionsSelected;
 }
 
+// Return a random string of character from the seleted sets
+// of length passwordLength 
 function generatePassword(){
 	var optionsFunctions = [lowerRange, upperRange, numbersRange, specialCharsRange];
 	var options = [];
@@ -70,7 +72,9 @@ function generatePassword(){
 	return password;
 }
 
-function valideAndTryWrite() {
+// Validate options boxes and try to write the password to the 
+// DOM. Used for hitting enter on the length box.
+function validateAndTryWrite() {
 	if(validateOptions()){
 		writePassword();
 	}
